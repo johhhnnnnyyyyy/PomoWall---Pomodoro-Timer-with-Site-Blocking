@@ -1,0 +1,26 @@
+{
+  "manifest-version": 3,
+  "name": "PomoWall",
+  "version": "1.0.0",
+  "description": "Block distracting websites during your Pomodoro focus sessions with a visual progress indicator",
+
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "declarativeNetRequest"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "xtension.html",
+    "default_title": "PomoWall"
+  }
+}
