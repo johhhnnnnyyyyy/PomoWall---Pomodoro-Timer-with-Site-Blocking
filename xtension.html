@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
     <title>PomoWall - Pomodoro Timer with Site Blocking</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
     <link rel="stylesheet" href="xtension.css" />
   </head>
   <body>
+    <div class="slide-container">
+      <div class="slide active" data-slide="0">
+        <div class="container">
+          
+          <div class="header">
+            <p class="title">Focus</p>
+          </div>
 
+          <div class="timeNfn">
+            <span class="material-symbols-outlined A">arrow_back_ios</span>
+            <p class="time">25<br>00</p>
+            <span class="material-symbols-outlined A">arrow_forward_ios</span>
+          </div>
+
+          <div class="footer">
+            <span class="material-symbols-outlined B">more_horiz</span>
+            <span class="material-symbols-outlined B">play_pause</span>
+            <span class="material-symbols-outlined B">settings_backup_restore</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="slide" data-slide="1">
+        <div class="container">
+          
+          <div class="header">
+            <p class="title">Short Break</p>
+          </div>
+
+          <div class="timeNfn">
+            <span class="material-symbols-outlined A">arrow_back_ios</span>
+            <p class="time">05<br>00</p>
+            <span class="material-symbols-outlined A">arrow_forward_ios</span>
+          </div>
+
+          <div class="footer">
+            <span class="material-symbols-outlined B">more_horiz</span>
+            <span class="material-symbols-outlined B">play_pause</span>
+            <span class="material-symbols-outlined B">settings_backup_restore</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="slide" data-slide="2">
+        <div class="container">
+          
+          <div class="header">
+            <p class="title">Long Break</p>
+          </div>
+
+          <div class="timeNfn">
+            <span class="material-symbols-outlined A left">arrow_back_ios</span>
+            <p class="time">15<br>00</p>
+            <span class="material-symbols-outlined A right">arrow_forward_ios</span>
+          </div>
+
+          <div class="footer">
+            <span class="material-symbols-outlined B more">more_horiz</span>
+            <span class="material-symbols-outlined B play">play_pause</span>
+            <span class="material-symbols-outlined B reset">settings_backup_restore</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="xtension.js"></script>
   </body>
 </html>
