@@ -41,6 +41,11 @@ body{
 }
 .A{
   font-size: 50px;
+  transition: color 0.2s ease;
+}
+.A:hover{
+  cursor: pointer;
+  color: rgb(157, 157, 157);
 }
 
 .footer{
@@ -54,6 +59,11 @@ body{
   border-radius: 24px;
   padding: 10px;
   font-size: 30px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.B:hover{
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .material-symbols-outlined {
