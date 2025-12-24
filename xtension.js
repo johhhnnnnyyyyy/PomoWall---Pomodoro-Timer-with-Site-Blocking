@@ -6,7 +6,7 @@ let currSlide=0;
 const totalSlide=3;  //focus=0,short break=1,long break=2
 
 function prevSlide(){
-  if(isPlaying) return;   //critical bug reported fixed here and below
+  if(isTimer) return;   //critical bug reported fixed here and below
 
   slides[currSlide].classList.remove('active');
   currSlide=(currSlide-1+totalSlide)%3;
@@ -14,7 +14,7 @@ function prevSlide(){
   updateDisplay();
 }
 function nextSlide(){
-  if(isPlaying) return;
+  if(isTimer) return;
 
   slides[currSlide].classList.remove('active');
   currSlide=(currSlide+1)%3;
@@ -37,6 +37,7 @@ const TIMERS = {
 
 let timeLeft = TIMERS.focus;
 let isPlaying = false;
+let isTimer = false;
 let timerInterval = null;
 const plays = document.querySelectorAll('.play');
 const resets = document.querySelectorAll('.reset');
@@ -44,6 +45,8 @@ const resets = document.querySelectorAll('.reset');
 resets.forEach(reset => {
   reset.addEventListener('click', () => {
     pause();    //MUST TO STOP THE TIMER
+    isTimer = false;
+
     if(currSlide === 0) timeLeft = TIMERS.focus;
     else if(currSlide === 1) timeLeft = TIMERS.shortBreak;
     else if(currSlide === 2) timeLeft = TIMERS.longBreak;
@@ -61,9 +64,13 @@ function play(){
 
   isPlaying = true;
 
-  if(currSlide === 0) timeLeft = timeLeft;
-  else if(currSlide === 1) timeLeft = timeLeft;
-  else if(currSlide === 2) timeLeft = timeLeft;
+  if(!isTimer){
+    isTimer = true;
+
+    if(currSlide === 0) timeLeft = TIMERS.focus;
+    else if(currSlide === 1) timeLeft = TIMERS.shortBreak;
+    else if(currSlide === 2) timeLeft = TIMERS.longBreak;
+  }
 
   timerInterval = setInterval(() => {
     if(timeLeft > 0){
@@ -72,6 +79,7 @@ function play(){
     }
     else{
       pause();
+      isTimer = false;
       alert("Time's up!");
     }
   }, 1000);
@@ -98,5 +106,3 @@ function updateDisplay(){
   slides[currSlide].querySelector('.time').innerHTML = `${mins}<br>${secs}`;
 }
 updateDisplay();
-
-//critical bug to be fixed next: switching slides while timer is running causes issues
