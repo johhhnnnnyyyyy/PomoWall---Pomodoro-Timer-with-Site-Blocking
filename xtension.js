@@ -22,6 +22,54 @@ function nextSlide(){
   updateDisplay();
 }
 
+//settings slide
+const sett=document.querySelectorAll('.setting');
+const inSites=document.querySelector('.input');
+const sitesList=document.querySelector('.sites-list');
+sett.forEach(setting => {
+  setting.addEventListener('click', () => {
+    if(isTimer) return;
+    slides[currSlide].classList.remove('active');
+    currSlide=3;
+    slides[currSlide].classList.add('active');
+  });
+});
+
+function addSite(site){
+  if(site.trim()==='') return;
+  const listItem=document.createElement('li');
+  listItem.textContent=site;
+
+  const del= document.createElement('span');
+  del.classList.add('material-symbols-outlined','delete');
+  del.textContent='delete';
+  del.addEventListener('click', () => {
+    listItem.remove();
+  });
+
+  listItem.appendChild(del);
+  sitesList.appendChild(listItem);
+}
+if(inSites){
+  inSites.addEventListener('keydown', (press) => {
+    if(press.key === 'Enter'){
+      addSite(inSites.value);
+      inSites.value='';
+    }
+  })
+}
+
+if(slides[3]){
+  const back = slides[3].querySelector('.back');
+  back.addEventListener('click', () => {
+    slides[currSlide].classList.remove('active');
+    currSlide=0;
+    slides[currSlide].classList.add('active');
+  });
+}
+
+
+
 arrows.forEach(arrow => {
   arrow.addEventListener('click',()=>{
     if(arrow.classList.contains('left'))        prevSlide();
