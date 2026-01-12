@@ -66,7 +66,7 @@ A Chrome extension that helps you stay focused during Pomodoro sessions by block
 <img width="396" height="647" alt="focus" src="https://github.com/user-attachments/assets/30fbd7b0-4733-41ad-b37e-900d515b2707" />
 <img width="398" height="648" alt="shortBreak" src="https://github.com/user-attachments/assets/55045187-d964-466d-aac0-ef885c6c32c8" />
 <img width="395" height="641" alt="longBreak" src="https://github.com/user-attachments/assets/5ac643df-b9ed-4de4-b741-7926ab488caf" />
-<img width="398" height="648" alt="shortBreak" src="https://github.com/user-attachments/assets/e99d5e7b-25ec-441b-9d73-7747a46a94c0" />
+<img width="399" height="642" alt="settings com" src="https://github.com/user-attachments/assets/b227a5c3-a53a-4a2e-a1cd-7e21ef4e4068" />
 
 ## 🔧 Permissions Explained
 
