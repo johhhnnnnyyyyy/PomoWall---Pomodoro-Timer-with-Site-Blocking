@@ -221,7 +221,7 @@ plays.forEach(playIsFunctionNameSoImDoingThis => {       // sorry for the variab
 
 function updateDisplay(){
   let time;
-  if(isPlaying) time = timeLeft;
+  if(isTimer) time = timeLeft;
   else{
     if(currSlide === 0) time = TIMERS.focus;
     else if(currSlide === 1) time = TIMERS.shortBreak;

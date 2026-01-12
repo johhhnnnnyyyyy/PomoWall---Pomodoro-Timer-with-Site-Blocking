@@ -1,5 +1,5 @@
 {
-  "manifest-version": 3,
+  "manifest_version": 3,
   "name": "PomoWall",
   "version": "1.0.0",
   "description": "Block distracting websites during your Pomodoro focus sessions with a visual progress indicator",

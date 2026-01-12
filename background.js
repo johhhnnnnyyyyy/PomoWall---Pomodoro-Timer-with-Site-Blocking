@@ -106,7 +106,6 @@ chrome.alarms.onAlarm.addListener((alarm) => {
       chrome.notifications.create(
         {
           type: 'basic',
-          iconUrl: 'icon48.png',
           title: "PomoWall Timer Completed!!!",
           message: timer.session === 'focus' 
             ? '🎉 Focus session complete! Have a break...have a kitkat 😉'
@@ -198,7 +197,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 })
 
-function updateBlockingRules(){
+ async function updateBlockingRules(){
   if (blockedSites.length === 0) {
     clearBlockingRules();
     return;
@@ -214,30 +213,27 @@ function updateBlockingRules(){
     }
   }));
 
-  chrome.declarativeNetRequest.getDynamicRules((oldRules) => {
-    const oldRuleIds = oldRules.map(rule => rule.id);
+  const oldRules = await chrome.declarativeNetRequest.getDynamicRules();
+  const oldRuleIds = oldRules.map(rule => rule.id);
     
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: oldRuleIds,
-      addRules: rules
-    }, () => {
-      if (chrome.runtime.lastError) {
-        console.error('Error updating rules:', chrome.runtime.lastError);
-      } else {
-        console.log('Blocking active:', rules.length, 'sites');
-      }
-    });
+  await chrome.declarativeNetRequest.updateDynamicRules({
+    removeRuleIds: oldRuleIds,
+    addRules: rules
   });
+    
+  console.log('✅ Blocking active:', rules.length, 'sites');
+  console.log('Rules:', rules);
 }
 
-function clearBlockingRules() {
-  chrome.declarativeNetRequest.getDynamicRules((rules) => {
-    const ruleIds = rules.map(rule => rule.id);
+async function clearBlockingRules() {
+  const rules = await chrome.declarativeNetRequest.getDynamicRules();
+  const ruleIds = rules.map(rule => rule.id);
     
-    chrome.declarativeNetRequest.updateDynamicRules({
+  if (ruleIds.length > 0) {
+    await chrome.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: ruleIds
-    }, () => {
-      console.log('Blocking disabled');
     });
-  });
+  }
+    
+  console.log('✅ Blocking disabled');
 }
